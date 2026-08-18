@@ -1,0 +1,16 @@
+# IDE
+.vscode/
+.idea/
+
+# Java / Gradle
+**/build/
+**/.gradle/
+**/bin/
+*.class
+
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
