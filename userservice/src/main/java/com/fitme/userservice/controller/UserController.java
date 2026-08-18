@@ -31,8 +31,8 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<ApiResponse<UserResponse>> register(@Valid @RequestBody RegisterRequest request) {
-        UserResponse user = userService.register(request);
+        UserResponse response = userService.register(request);
         return ResponseEntity.status(HttpStatus.CREATED)
-            .body(ApiResponse.success("User registered successfully", user));
+            .body(ApiResponse.success("User registered successfully", response));
     }
 }
