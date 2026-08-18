@@ -34,6 +34,12 @@ public class GlobalExceptionHandler {
             .body(new ApiResponse<>(false, message, null, LocalDateTime.now(ZoneId.of("Asia/Jakarta"))));
     }
 
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ApiResponse<Void>> handleUserNotFound(UserNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+            .body(new ApiResponse<>(false, ex.getMessage(), null, LocalDateTime.now(ZoneId.of("Asia/Jakarta"))));
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Void>> handleGenericException(Exception ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

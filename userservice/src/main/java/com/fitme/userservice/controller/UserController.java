@@ -25,8 +25,8 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/{userId}")
-    public ResponseEntity<UserResponse> getUserProfile(@PathVariable String userId) {
-        return ResponseEntity.ok(userService.getUserProfile(userId));
+    public ResponseEntity<ApiResponse<UserResponse>> getUserProfile(@PathVariable String userId) {
+        return ResponseEntity.ok(ApiResponse.success("User profile retrieved successfully", userService.getUserProfile(userId)));
     }
 
     @PostMapping("/register")

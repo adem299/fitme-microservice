@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.fitme.userservice.dto.RegisterRequest;
 import com.fitme.userservice.dto.UserResponse;
 import com.fitme.userservice.exception.EmailAlreadyExistsException;
+import com.fitme.userservice.exception.UserNotFoundException;
 import com.fitme.userservice.mapper.UserMapper;
 import com.fitme.userservice.model.User;
 import com.fitme.userservice.repository.UserRepository;
@@ -24,7 +25,10 @@ public class UserService {
     }
 
     public UserResponse getUserProfile(String userId) {
-        throw new UnsupportedOperationException("Unimplemented method 'getUserProfile'");
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
+        
+        return userMapper.toUserResponse(user);
     }
 
     public UserResponse register(RegisterRequest request) {
