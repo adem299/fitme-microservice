@@ -33,12 +33,12 @@ public class UserService {
 
     public UserResponse register(RegisterRequest request) {
 
-        if (userRepository.existsByEmail(request.getEmail())) {
+        if (userRepository.existsByEmail(request.email())) {
             throw new EmailAlreadyExistsException("User already exists");
         }
 
         User user = userMapper.toUser(request);
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setPassword(passwordEncoder.encode(request.password()));
 
         User savedUser = userRepository.save(user);
         return userMapper.toUserResponse(savedUser);
