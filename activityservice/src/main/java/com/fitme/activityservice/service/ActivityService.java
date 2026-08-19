@@ -1,5 +1,7 @@
 package com.fitme.activityservice.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.fitme.activityservice.dto.ActivityRequest;
@@ -20,5 +22,13 @@ public class ActivityService {
         return activityMapper.toActivityResponse(
             activityRepository.save(activityMapper.toActivity(request))
         );
+    }
+
+    public List<ActivityResponse> getUserActivities(String userId) {
+        List<Activity> activities = activityRepository.findByUserId(userId);
+
+        return activities.stream()
+            .map(activityMapper::toActivityResponse)
+            .toList();
     }
 }
