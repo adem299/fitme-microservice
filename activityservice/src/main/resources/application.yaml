@@ -1,12 +1,11 @@
 spring:
   config:
-    import: optional:file:.env[.properties]
+    import: optional:file:.env[.properties]  
   application:
     name: activityservice
-  data:
-    mongodb:
-      uri: ${DATABSE_URI}
-      database: ${DATABASE_NAME}
+  mongodb:
+    uri: ${MONGODB_URL}
+
 
 server:
   port: 8082
