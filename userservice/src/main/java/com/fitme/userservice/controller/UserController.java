@@ -35,4 +35,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(ApiResponse.success("User registered successfully", response));
     }
+
+    @GetMapping("/{userId}/validate")
+    public ResponseEntity<Boolean> validateUser(@PathVariable String userId) {
+        return ResponseEntity.ok(userService.existByUserId(userId));
+    }
 }

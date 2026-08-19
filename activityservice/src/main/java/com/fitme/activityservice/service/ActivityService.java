@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.fitme.activityservice.dto.ActivityRequest;
 import com.fitme.activityservice.dto.ActivityResponse;
+import com.fitme.activityservice.exception.UserNotFoundException;
 import com.fitme.activityservice.mapper.ActivityMapper;
 import com.fitme.activityservice.model.Activity;
 import com.fitme.activityservice.repository.ActivityRepository;
@@ -17,8 +18,16 @@ import lombok.RequiredArgsConstructor;
 public class ActivityService {
     private final ActivityRepository activityRepository;
     private final ActivityMapper activityMapper;
+    private final UserValidationService userValidationService;
 
     public ActivityResponse trackActivity(ActivityRequest request) {
+        
+        boolean isValidUser = userValidationService.validateUser(request.userId());
+
+        if (!isValidUser) {
+            throw new UserNotFoundException("User not found");
+        }
+
         return activityMapper.toActivityResponse(
             activityRepository.save(activityMapper.toActivity(request))
         );

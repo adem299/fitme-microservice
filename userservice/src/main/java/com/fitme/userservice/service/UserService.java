@@ -43,4 +43,8 @@ public class UserService {
         User savedUser = userRepository.save(user);
         return userMapper.toUserResponse(savedUser);
     }
+
+    public Boolean existByUserId(String userId) {
+        return userRepository.existsById(userId);
+    }
 }
