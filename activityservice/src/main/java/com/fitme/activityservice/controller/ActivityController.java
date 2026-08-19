@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -36,4 +37,9 @@ public class ActivityController {
     public ResponseEntity<ApiResponse<List<ActivityResponse>>> getUserActivities(@RequestHeader("X-User-Id") String userId) {
         return ResponseEntity.ok(ApiResponse.success("User activities retrieved successfully", activityService.getUserActivities(userId)));
     } 
+
+    @GetMapping("/{activityId}")
+    public ResponseEntity<ApiResponse<ActivityResponse>> getActivityById(@PathVariable String activityId) {
+        return ResponseEntity.ok(ApiResponse.success("Activity retrieved successfully", activityService.getActivityById(activityId)));
+    }
 }

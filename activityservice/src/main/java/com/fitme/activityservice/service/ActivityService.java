@@ -31,4 +31,8 @@ public class ActivityService {
             .map(activityMapper::toActivityResponse)
             .toList();
     }
+
+    public ActivityResponse getActivityById(String activityId) {
+        return activityMapper.toActivityResponse(activityRepository.findById(activityId).orElseThrow());
+    }
 }
