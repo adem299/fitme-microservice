@@ -1,0 +1,12 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: activityservice
+  data:
+    mongodb:
+      uri: ${DATABSE_URI}
+      database: ${DATABASE_NAME}
+
+server:
+  port: 8082
