@@ -16,3 +16,11 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
+
+rabbitmq:
+  exchange: 
+    name: fitme.exchange
+  queue:
+    name: activity.queue
+  routing:
+    key: activity.tracking
