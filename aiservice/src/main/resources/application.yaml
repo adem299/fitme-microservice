@@ -1,14 +1,9 @@
-spring:
-  config:
-    import: optional:file:.env[.properties]  
-  application:
-    name: activity-service
-  mongodb:
-    uri: ${MONGODB_URL}
-
-
 server:
-  port: 8082
+  port: 8083
+
+spring:
+  application:
+    name: ai-service
 
 eureka:
   instance:

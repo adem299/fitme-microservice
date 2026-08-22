@@ -6,7 +6,7 @@ spring:
     import: optional:file:.env[.properties]
 
   application:
-    name: userservice
+    name: user-service
 
   datasource:
     url: ${DATABASE_URL}
