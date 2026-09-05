@@ -23,3 +23,10 @@ rabbitmq:
     name: activity.queue
   routing:
     key: activity.tracking
+
+groq:
+  api: 
+    url: ${GROQ_API_URL}
+    key: ${GROQ_API_KEY}
+    max-tokens: 800
+    request-interval-ms: 2000

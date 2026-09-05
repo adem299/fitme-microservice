@@ -7,6 +7,7 @@ public record ActivityMessage (
     String id,
     String userid,
     Integer duration,
+    String activityType,
     Integer caloriesBurned,
     LocalDateTime startTime,
     Map<String, Object> additionalMetrics,
